@@ -61,3 +61,13 @@
 .movie-card:hover .movie-detail {
   opacity: 1;
 }
+
+button {
+  border: none;
+  padding: 4px 6px;
+  background-color: palevioletred;
+  color: white;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+}

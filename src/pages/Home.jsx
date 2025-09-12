@@ -27,7 +27,7 @@ const Home = () => {
     <>
       {
         (movie) ? (
-          <Card movie={movie} setMovie={setMovie} />
+          <Card movie={movie} />
         ) : (
           <p style={{ fontSize: "2rem" }}>Loading...</p>
         )
