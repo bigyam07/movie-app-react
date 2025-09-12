@@ -55,3 +55,12 @@
   color: palevioletred;
   cursor: pointer;
 }
+
+.active {
+  color: palevioletred;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

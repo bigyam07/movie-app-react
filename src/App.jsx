@@ -1,6 +1,6 @@
 import { createRoutesFromElements, createBrowserRouter, Route, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
-import Favourite from "./pages/Favourite";
+import Favorite from "./pages/Favorite";
 import Rootlayout from "./rootLayout/Rootlayout";
 
 const App = () => {
@@ -8,10 +8,10 @@ const App = () => {
     createRoutesFromElements(
       <Route path="/" element={<Rootlayout />}>
         <Route index element={<Home />} />
-        <Route path="favourite" element={<Favourite />} />
+        <Route path="favorite" element={<Favorite />} />
       </Route>
     ),
-    { basename: "/movie-app-react" }
+    { basename: "/movie-app-react/" }
   )
   return (
     <>

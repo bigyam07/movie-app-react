@@ -26,6 +26,7 @@
   right: 10px;
   top: 10px;
   cursor: pointer;
+  opacity: 0;
 }
 
 .fav-icon:hover {
@@ -58,7 +59,8 @@
   z-index: 1;
 }
 
-.movie-card:hover .movie-detail {
+.movie-card:hover .movie-detail,
+.movie-card:hover .fav-icon {
   opacity: 1;
 }
 
