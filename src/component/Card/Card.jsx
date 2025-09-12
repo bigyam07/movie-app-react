@@ -36,7 +36,11 @@ const Card = ({ movie }) => {
                     <button onClick={() => fetchTrailer(movie.id)}>Watch Trailer</button>
                   </div>
                 </div>
-                <img key={movie.id} src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
+                <img
+                  key={movie.id}
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  alt={movie.overview}
+                />
               </div>
             </>
           )

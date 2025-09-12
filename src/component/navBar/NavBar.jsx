@@ -10,9 +10,12 @@ const NavBar = () => {
       </ul>
 
       <div className="search-container">
-        <label>
+        <div className="search-section">
           <input type="text" placeholder="Search" />
-        </label>
+          <div className="search-btn">
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
       </div>
     </div >
   )

@@ -24,6 +24,19 @@
   flex: 1;
 }
 
+.search-section {
+  display: flex;
+  align-items: center;
+  background-color: #4d4d4d;
+}
+
+.search-btn {
+  padding: 6px;
+  height: 100%;
+  cursor: pointer;
+  background-color: palevioletred;
+}
+
 .search-container input {
   padding: 4px 10px;
   width: 100%;
