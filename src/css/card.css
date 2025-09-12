@@ -9,9 +9,55 @@
   height: 380px;
   width: 280px;
   margin-top: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .movie-card img {
   width: 100%;
   height: 100%;
+}
+
+.fav-icon {
+  position: absolute;
+  font-size: 2rem;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.fav-icon:hover {
+  color: red;
+}
+
+.movie-detail {
+  background-color: black;
+  padding: 8px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.movie-detail p {
+  font-size: 0.8rem;
+}
+
+.movie-detail h4 {
+  color: palevioletred;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.movie-card:hover .movie-detail {
+  opacity: 1;
 }
