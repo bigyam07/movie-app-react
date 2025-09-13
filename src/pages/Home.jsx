@@ -17,7 +17,6 @@ const Home = () => {
         } else { return response.json(); }
       })
       .then(data => {
-        console.log(data.results);
         setMovie(data.results);
       })
       .catch(error => {
