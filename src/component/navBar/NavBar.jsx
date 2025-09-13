@@ -46,7 +46,7 @@ const NavBar = () => {
             onChange={(e) => setSearch(e.target.value)}
             onKeyDown={handleKey}
           />
-          <div className="search-btn" onClick={(e) => fetchSearch(search)} >
+          <div className="search-btn" onClick={() => fetchSearch(search)} >
             <i className="fa-solid fa-magnifying-glass"></i>
           </div>
         </div>
