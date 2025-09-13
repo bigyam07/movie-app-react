@@ -3,7 +3,7 @@ import Card from "../component/Card/Card";
 import { MovieContext } from "../context/ContexProvider";
 
 const Home = () => {
-  const { movie, setMovie } = useContext(MovieContext);
+  const { movie, setMovie, count } = useContext(MovieContext);
 
   const API_KEY = import.meta.env.VITE_API_KEY;
   const URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`;
@@ -23,7 +23,7 @@ const Home = () => {
       .catch(error => {
         console.log("Error: ", error.message);
       })
-  }, []);
+  }, [count]);
   return (
     <>
       {

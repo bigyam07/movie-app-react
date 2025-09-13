@@ -5,7 +5,7 @@ import { MovieContext } from "../../context/ContexProvider";
 
 const NavBar = () => {
   const [search, setSearch] = useState("");
-  const { setMovie } = useContext(MovieContext);
+  const { setMovie, setCount } = useContext(MovieContext);
 
   const API_KEY = import.meta.env.VITE_API_KEY;
   const fetchSearch = async (searchInput) => {
@@ -23,18 +23,18 @@ const NavBar = () => {
     setMovie(data.results);
   }
 
-  function handleKey(e) {
+  const handleKey = (e) => {
     if (e.key == "Enter") {
       fetchSearch(search);
     }
   }
   return (
     <div className="nav-bar">
-      <Link to="/"><h2 className="logo">JustWatch</h2></Link>
+      <Link to="/"><h2 onClick={() => setCount((c) => c + 1)} className="logo">JustWatch</h2></Link>
 
       <ul className="nav-list">
-        <NavLink to="/"><li>HOME</li></NavLink>
-        <NavLink to="/favorite"><li>FAVORITE</li></NavLink>
+        <NavLink to="/"><li onClick={() => setCount((c) => c + 1)}>HOME</li></NavLink>
+        <NavLink to="favorite"><li>FAVORITE</li></NavLink>
       </ul>
 
       <div className="search-container">
