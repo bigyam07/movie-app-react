@@ -33,7 +33,7 @@ const Card = () => {
                   </div>
                   <div className="movie-detail">
                     <h4>{movie.title}</h4>
-                    <p>{movie.overview}</p>
+                    <p className="overview">{movie.overview}</p>
                     <p><b>Release</b>: {movie.release_date}</p>
                     <div className="learn-btn">
                       <button onClick={() => fetchTrailer(movie.id)}>Watch Trailer</button>

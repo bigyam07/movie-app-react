@@ -45,10 +45,16 @@
   display: flex;
   flex-direction: column;
   gap: 7px;
+  width: 100%;
 }
 
 .movie-detail p {
   font-size: 0.8rem;
+}
+
+.overview {
+  max-height: 150px;
+  overflow: auto;
 }
 
 .movie-detail h4 {
