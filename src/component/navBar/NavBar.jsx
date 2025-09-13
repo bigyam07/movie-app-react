@@ -1,9 +1,11 @@
 import "../../css/NavBar.css"
 import { NavLink, Link } from "react-router-dom"
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { MovieContext } from "../../context/ContexProvider";
 
 const NavBar = () => {
   const [search, setSearch] = useState("");
+  const { movie, setMovie } = useContext(MovieContext);
 
   const API_KEY = import.meta.env.VITE_API_KEY;
   const fetchSearch = async (searchInput) => {
@@ -13,7 +15,8 @@ const NavBar = () => {
       console.log("Could not find the movie");
     }
     const data = await response.json();
-
+    console.log(data.results);
+    setMovie(data.results);
   }
 
   return (
@@ -33,7 +36,7 @@ const NavBar = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <div className="search-btn">
+          <div className="search-btn" onClick={(e) => fetchSearch(search)} >
             <i className="fa-solid fa-magnifying-glass"></i>
           </div>
         </div>

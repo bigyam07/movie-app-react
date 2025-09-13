@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import Card from "../component/Card/Card";
+import { MovieContext } from "../context/ContexProvider";
 
 const Home = () => {
-  const [movie, setMovie] = useState(null);
+  const { movie, setMovie } = useContext(MovieContext);
 
   const API_KEY = import.meta.env.VITE_API_KEY;
   const URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`;
@@ -27,7 +28,7 @@ const Home = () => {
     <>
       {
         (movie) ? (
-          <Card movie={movie} />
+          <Card />
         ) : (
           <p style={{ fontSize: "2rem" }}>Loading...</p>
         )

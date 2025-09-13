@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import "../../css/card.css";
+import { MovieContext } from "../../context/ContexProvider.jsx";
 
-const Card = ({ movie }) => {
+const Card = () => {
+  const { movie } = useContext(MovieContext);
   const API_KEY = import.meta.env.VITE_API_KEY;
-
   const fetchTrailer = async (id) => {
     const URL = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
     const response = await fetch(URL);
@@ -22,28 +24,30 @@ const Card = ({ movie }) => {
     <div className="movie-card-container">
       {
         movie.map((movie) => {
-          return (
-            <>
-              <div className="movie-card">
-                <div className="fav-icon">
-                  <i className="fa-solid fa-heart"></i>
-                </div>
-                <div className="movie-detail">
-                  <h4>{movie.title}</h4>
-                  <p>{movie.overview}</p>
-                  <p><b>Release</b>: {movie.release_date}</p>
-                  <div className="learn-btn">
-                    <button onClick={() => fetchTrailer(movie.id)}>Watch Trailer</button>
+          if (movie.poster_path != null) {
+            return (
+              <>
+                <div className="movie-card">
+                  <div className="fav-icon">
+                    <i className="fa-solid fa-heart"></i>
                   </div>
+                  <div className="movie-detail">
+                    <h4>{movie.title}</h4>
+                    <p>{movie.overview}</p>
+                    <p><b>Release</b>: {movie.release_date}</p>
+                    <div className="learn-btn">
+                      <button onClick={() => fetchTrailer(movie.id)}>Watch Trailer</button>
+                    </div>
+                  </div>
+                  <img
+                    key={movie.id}
+                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                    alt={movie.overview}
+                  />
                 </div>
-                <img
-                  key={movie.id}
-                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                  alt={movie.overview}
-                />
-              </div>
-            </>
-          )
+              </>
+            )
+          }
         })
       }
     </div >

@@ -1,13 +1,13 @@
 import { createContext, useState } from "react"
 
 export const MovieContext = createContext();
-const Contex = () => {
-  const [movie, setMovie] = useState();
+const ContexProvider = ({ children }) => {
+  const [movie, setMovie] = useState(null);
   return (
     <MovieContext.Provider value={{ movie, setMovie }}>
-
+      {children}
     </MovieContext.Provider>
   )
 }
 
-export default Contex
+export default ContexProvider
