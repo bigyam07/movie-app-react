@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "../../css/card.css";
 import { MovieContext } from "../../context/ContexProvider.jsx";
 
 const Card = () => {
   const { movie } = useContext(MovieContext);
+  const [favorite, setFavorite] = useState([]);
+
   const API_KEY = import.meta.env.VITE_API_KEY;
   const fetchTrailer = async (id) => {
     const URL = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
@@ -20,15 +22,22 @@ const Card = () => {
       alert("Trailer not available 😢");
     }
   }
+  const handleFavIcon = (id) => {
+    setFavorite((prev) => {
+      return prev.includes(id) ? prev.filter((favId) => favId !== id) : [...prev, id];
+    })
+  }
+
   return (
     <div className="movie-card-container">
       {
         movie.map((movie) => {
           if (movie.poster_path != null) {
+            const isFav = favorite.includes(movie.id);
             return (
               <>
                 <div className="movie-card">
-                  <div className="fav-icon">
+                  <div className="fav-icon" onClick={() => handleFavIcon(movie.id)} style={{ color: isFav ? "red" : "white" }}>
                     <i className="fa-solid fa-heart"></i>
                   </div>
                   <div className="movie-detail">

@@ -1,7 +1,7 @@
 const Favorite = () => {
   return (
     <div>
-      Favorite
+      <p>No Favorite Saved</p>
     </div>
   )
 }
