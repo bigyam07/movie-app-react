@@ -5,20 +5,29 @@ import { MovieContext } from "../../context/ContexProvider";
 
 const NavBar = () => {
   const [search, setSearch] = useState("");
-  const { movie, setMovie } = useContext(MovieContext);
+  const { setMovie } = useContext(MovieContext);
 
   const API_KEY = import.meta.env.VITE_API_KEY;
   const fetchSearch = async (searchInput) => {
+    if (searchInput.trim() == "") return;
+
     const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchInput}`;
     const response = await fetch(URL);
+
     if (!response.ok) {
       console.log("Could not find the movie");
     }
+
     const data = await response.json();
     console.log(data.results);
     setMovie(data.results);
   }
 
+  function handleKey(e) {
+    if (e.key == "Enter") {
+      fetchSearch(search);
+    }
+  }
   return (
     <div className="nav-bar">
       <Link to="/"><h2 className="logo">JustWatch</h2></Link>
@@ -35,6 +44,7 @@ const NavBar = () => {
             placeholder="Search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={handleKey}
           />
           <div className="search-btn" onClick={(e) => fetchSearch(search)} >
             <i className="fa-solid fa-magnifying-glass"></i>
