@@ -2,6 +2,8 @@ import { createRoutesFromElements, createBrowserRouter, Route, RouterProvider } 
 import Home from "./pages/Home";
 import Favorite from "./pages/Favorite";
 import Rootlayout from "./rootLayout/Rootlayout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 
 const App = () => {
   const router = createBrowserRouter(
@@ -16,6 +18,7 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router} />
+      <ToastContainer position="top-right" autoClose={2000} />
     </>
   )
 }
