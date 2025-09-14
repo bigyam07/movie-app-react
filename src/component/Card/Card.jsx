@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "../../css/card.css";
 import { MovieContext } from "../../context/ContexProvider.jsx";
+import { toast } from "react-toastify";
 
 const Card = () => {
-  const { movie } = useContext(MovieContext);
-  const [favorite, setFavorite] = useState([]);
+  const { movie, setFavorite } = useContext(MovieContext);
 
   const API_KEY = import.meta.env.VITE_API_KEY;
   const fetchTrailer = async (id) => {
@@ -19,25 +19,32 @@ const Card = () => {
     if (trailer) {
       window.open(`https://www.youtube.com/watch?v=${trailer.key}`, "_blank");
     } else {
-      alert("Trailer not available 😢");
+      toast.error("Trailer not available 😢");
     }
   }
-  const handleFavIcon = (id) => {
+  const handleFavIcon = (movie) => {
     setFavorite((prev) => {
-      return prev.includes(id) ? prev.filter((favId) => favId !== id) : [...prev, id];
-    })
-  }
+      const alreadyFav = prev.some((favMovie) => favMovie.id === movie.id); // check by id
+
+      if (alreadyFav) {
+        toast.info("This movie is already in favorites ❤️");
+        return prev;
+      }
+
+      toast.success("Saved to favorites ✅");
+      return [...prev, movie];
+    });
+  };
 
   return (
     <div className="movie-card-container">
       {
         movie.map((movie) => {
           if (movie.poster_path != null) {
-            const isFav = favorite.includes(movie.id);
             return (
               <>
                 <div className="movie-card">
-                  <div className="fav-icon" onClick={() => handleFavIcon(movie.id)} style={{ color: isFav ? "red" : "white" }}>
+                  <div className="fav-icon" onClick={() => handleFavIcon(movie)}>
                     <i className="fa-solid fa-heart"></i>
                   </div>
                   <div className="movie-detail">
