@@ -42,26 +42,24 @@ const Card = () => {
         movie.map((movie) => {
           if (movie.poster_path != null) {
             return (
-              <>
-                <div className="movie-card">
-                  <div className="fav-icon" onClick={() => handleFavIcon(movie)}>
-                    <i className="fa-solid fa-heart"></i>
-                  </div>
-                  <div className="movie-detail">
-                    <h4>{movie.title}</h4>
-                    <p className="overview">{movie.overview}</p>
-                    <p><b>Release</b>: {movie.release_date}</p>
-                    <div className="learn-btn">
-                      <button onClick={() => fetchTrailer(movie.id)}>Watch Trailer</button>
-                    </div>
-                  </div>
-                  <img
-                    key={movie.id}
-                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    alt={movie.overview}
-                  />
+              <div className="movie-card" key={movie.id}>
+                <div className="fav-icon" onClick={() => handleFavIcon(movie)}>
+                  <i className="fa-solid fa-heart"></i>
                 </div>
-              </>
+                <div className="movie-detail">
+                  <h4>{movie.title}</h4>
+                  <p className="overview">{movie.overview}</p>
+                  <p><b>Release</b>: {movie.release_date}</p>
+                  <div className="learn-btn">
+                    <button onClick={() => fetchTrailer(movie.id)}>Watch Trailer</button>
+                  </div>
+                </div>
+                <img
+                  key={movie.id}
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  alt={movie.overview}
+                />
+              </div>
             )
           }
         })
