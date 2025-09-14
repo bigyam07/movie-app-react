@@ -27,7 +27,7 @@ const Favorite = () => {
             )
           })
         ) : (
-          <p> No Favorite Saved</p>
+          <p className="fav-error"> No Favorite Saved</p>
         )
       }
     </div >
