@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import "../../css/card.css";
 import { MovieContext } from "../../context/ContexProvider.jsx";
+import { toast } from "react-toastify";
 
 const Card = () => {
-  const { movie } = useContext(MovieContext);
+  const { movie, setFavorite } = useContext(MovieContext);
+
   const API_KEY = import.meta.env.VITE_API_KEY;
   const fetchTrailer = async (id) => {
     const URL = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
@@ -17,9 +19,23 @@ const Card = () => {
     if (trailer) {
       window.open(`https://www.youtube.com/watch?v=${trailer.key}`, "_blank");
     } else {
-      alert("Trailer not available 😢");
+      toast.error("Trailer not available 😢");
     }
   }
+  const handleFavIcon = (movie) => {
+    setFavorite((prev) => {
+      const alreadyFav = prev.some((favMovie) => favMovie.id === movie.id); // check by id
+
+      if (alreadyFav) {
+        toast.info("This movie is already in favorites ❤️");
+        return prev;
+      }
+
+      toast.success("Saved to favorites ✅");
+      return [...prev, movie];
+    });
+  };
+
   return (
     <div className="movie-card-container">
       {
@@ -27,7 +43,7 @@ const Card = () => {
           if (movie.poster_path != null) {
             return (
               <div className="movie-card" key={movie.id}>
-                <div className="fav-icon">
+                <div className="fav-icon" onClick={() => handleFavIcon(movie)}>
                   <i className="fa-solid fa-heart"></i>
                 </div>
                 <div className="movie-detail">
@@ -39,6 +55,7 @@ const Card = () => {
                   </div>
                 </div>
                 <img
+                  key={movie.id}
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                   alt={movie.overview}
                 />

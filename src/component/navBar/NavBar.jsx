@@ -6,6 +6,8 @@ import { MovieContext } from "../../context/ContexProvider";
 const NavBar = () => {
   const [search, setSearch] = useState("");
   const { setMovie, setCount } = useContext(MovieContext);
+  const [toggleSearch, setToggleSearch] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   const API_KEY = import.meta.env.VITE_API_KEY;
   const fetchSearch = async (searchInput) => {
@@ -27,9 +29,29 @@ const NavBar = () => {
       fetchSearch(search);
     }
   }
+  const handleSearchToggle = () => {
+    if (!toggleSearch) {
+      document.querySelector(".search-container").style.display = "block";
+      setToggleSearch(true);
+    } else {
+      document.querySelector(".search-container").style.display = "none";
+      setToggleSearch(false);
+    }
+  }
+  const handleMenuToggle = () => {
+    if (!toggleMenu) {
+      document.querySelector(".nav-list").style.display = "block";
+      setToggleMenu(true);
+    } else {
+      document.querySelector(".nav-list").style.display = "none";
+      setToggleMenu(false);
+    }
+  }
   return (
     <div className="nav-bar">
-      <Link to="/"><h2 onClick={() => setCount((c) => c + 1)} className="logo">JustWatch</h2></Link>
+      <div className="logo-container">
+        <Link to="/"><h2 onClick={() => setCount((c) => c + 1)} className="logo">JustWatch</h2></Link>
+      </div>
 
       <ul className="nav-list">
         <NavLink to="/"><li onClick={() => setCount((c) => c + 1)}>HOME</li></NavLink>
@@ -49,6 +71,12 @@ const NavBar = () => {
             <i className="fa-solid fa-magnifying-glass"></i>
           </div>
         </div>
+      </div>
+      <div className="menu-box">
+        <div className="search-box" onClick={handleSearchToggle}>
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <i className="fa-solid fa-bars menu-icon" onClick={handleMenuToggle}></i>
       </div>
     </div >
   )
