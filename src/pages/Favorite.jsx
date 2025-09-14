@@ -9,7 +9,7 @@ const Favorite = () => {
   };
 
   return (
-    <div className="movie-card-container">
+    <div className="movie-card-container favorite-container">
       {
         (favorite.length != 0) ? (
           favorite.map((movie, index) => {

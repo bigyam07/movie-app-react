@@ -9,6 +9,10 @@
   justify-content: space-around;
 }
 
+.favorite-container {
+  justify-content: left;
+}
+
 .movie-card {
   border: 1px solid white;
   height: 380px;
@@ -124,6 +128,10 @@ button {
   .fav-error {
     margin-top: 20%;
     font-size: 2rem;
+  }
+
+  .remove-icon {
+    opacity: 1;
   }
 
 }
