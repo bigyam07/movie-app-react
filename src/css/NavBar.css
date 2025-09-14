@@ -1,3 +1,7 @@
+:root {
+  --primary-color: #6AC045;
+}
+
 .nav-bar {
   display: flex;
   justify-content: space-between;
@@ -17,7 +21,7 @@
 }
 
 .nav-list li:hover {
-  color: palevioletred;
+  color: var(--primary-color);
 }
 
 .search-container {
@@ -34,7 +38,7 @@
   padding: 6px;
   height: 100%;
   cursor: pointer;
-  background-color: palevioletred;
+  background-color: var(--primary-color);
 }
 
 .search-container input {
@@ -52,12 +56,12 @@
 }
 
 .logo {
-  color: palevioletred;
+  color: var(--primary-color);
   cursor: pointer;
 }
 
 .active {
-  color: palevioletred;
+  color: var(--primary-color);
 }
 
 a {
