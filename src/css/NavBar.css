@@ -84,7 +84,6 @@ a {
 }
 
 @media screen and (max-width: 610px) {
-
   .menu-box {
     display: block;
     font-size: 2rem;
@@ -95,9 +94,7 @@ a {
   .nav-list {
     display: none;
   }
-}
 
-@media screen and (max-width: 610px) {
   .search-container {
     position: absolute;
     top: 100%;

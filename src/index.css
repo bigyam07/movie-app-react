@@ -18,7 +18,7 @@ body {
   padding: 20px;
 }
 
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: 1370px) {
   .container {
     max-width: 1200px;
     margin: 0 auto;
