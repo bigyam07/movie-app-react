@@ -103,7 +103,7 @@ button {
   cursor: pointer;
 }
 
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: 1370px) {
   .movie-card-container {
     max-width: 1200px;
     margin: 0 auto;
